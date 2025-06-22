@@ -503,7 +503,7 @@ if (isset($_GET['sort_tahun']) && $_GET['sort_tahun'] == 'asc') {
             <table class="book-table">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>ID</th> 
                         <th>Judul</th>
                         <th>Pengarang</th>
                         <th>Penerbit</th>
@@ -512,36 +512,37 @@ if (isset($_GET['sort_tahun']) && $_GET['sort_tahun'] == 'asc') {
                         <th>Aksi</th>
                     </tr>
                 </thead>
-            <tbody>
-                <?php if (count($books) > 0): ?>
-                    <?php $no = 1; foreach ($books as $book): ?>
+                <tbody>
+                    <?php if (count($books) > 0): ?>
+                        <?php foreach ($books as $book): ?>
+                            <tr>
+                                <td><?= $book['id_buku'] ?></td> <!-- Menampilkan id_buku -->
+                                <td><?= htmlspecialchars($book['judul']) ?></td>
+                                <td><?= htmlspecialchars($book['pengarang']) ?></td>
+                                <td><?= $book['penerbit'] ? htmlspecialchars($book['penerbit']) : '-' ?></td>
+                                <td><?= $book['tahun_terbit'] ? $book['tahun_terbit'] : '-' ?></td>
+                                <td><?= $book['jumlah_stok'] ?></td>
+                                <td>
+                                    <div class="book-actions">
+                                        <a href="edit_buku.php?id=<?= $book['id_buku'] ?>" class="btn-edit">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <a href="buku.php?delete=<?= $book['id_buku'] ?>" class="btn-delete" 
+                                        onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
+                                            <i class="fas fa-trash"></i> Hapus
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
                         <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= htmlspecialchars($book['judul']) ?></td>
-                            <td><?= htmlspecialchars($book['pengarang']) ?></td>
-                            <td><?= $book['penerbit'] ? htmlspecialchars($book['penerbit']) : '-' ?></td>
-                            <td><?= $book['tahun_terbit'] ? $book['tahun_terbit'] : '-' ?></td>
-                            <td><?= $book['jumlah_stok'] ?></td>
-                            <td>
-                                <div class="book-actions">
-                                    <a href="edit_buku.php?id=<?= $book['id_buku'] ?>" class="btn-edit">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </a>
-                                    <a href="buku.php?delete=<?= $book['id_buku'] ?>" class="btn-delete" 
-                                    onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">
-                                        <i class="fas fa-trash"></i> Hapus
-                                    </a>
-                                </div>
-                            </td>
+                            <td colspan="7" style="text-align: center;">Tidak ada data buku</td>
                         </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="7" style="text-align: center;">Tidak ada data buku</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
+                    <?php endif; ?>
+                </tbody>
             </table>
+
 
             <!-- Sorting Section -->
             <div class="tahun-terbit-section">

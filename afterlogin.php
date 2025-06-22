@@ -134,25 +134,25 @@ if(!isset($_SESSION['admin'])) {
             <a href="buku.php" class="menu-card">
                 <i class="fas fa-book-open"></i>
                 <h3>Kelola Buku</h3>
-                <p>Manajemen koleksi buku perpustakaan</p>
+                <p>Manajemen Koleksi Buku Perpustakaan</p>
             </a>
             
             <a href="peminjaman.php" class="menu-card">
                 <i class="fas fa-hand-holding-heart"></i>
                 <h3>Peminjaman</h3>
-                <p>Proses peminjaman buku oleh anggota</p>
+                <p>Proses Peminjaman Buku</p>
             </a>
             
             <a href="pengembalian.php" class="menu-card">
                 <i class="fas fa-exchange-alt"></i>
                 <h3>Pengembalian</h3>
-                <p>Proses pengembalian buku</p>
+                <p>Proses Pengembalian Buku</p>
             </a>
             
             <a href="logout.php" class="menu-card logout-card">
                 <i class="fas fa-sign-out-alt"></i>
                 <h3>Logout</h3>
-                <p>Keluar dari sistem admin</p>
+                <p>Keluar dari Sistem Admin</p>
             </a>
         </div>
     </div>
